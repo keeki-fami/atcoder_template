@@ -1,3 +1,8 @@
+#Union-Find
+#用意するもの：parentリスト（ノードiの親を記録）、nodeリスト（ノードiが親である時、接続されているノード数を記録）
+#UF(parent:リスト,node:リスト)
+#find(x:親を求めたいノード)
+
 def find(x):
     if parent[x]==x:
         return x
@@ -5,25 +10,25 @@ def find(x):
         parent[x] = find(parent[x])
         return parent[x]
 
-
-ring = set()
-for i in range(m):
-    a,b,c,d = input().split()#TODO:入力の更新
+def UF(parent,node)
+    ring = set()
+    for i in range(m):
+        a,b,c,d = input().split()#TODO:入力の更新
     
-    num1 = int(a)
-    num2 = int(c)
+        num1 = int(a)
+        num2 = int(c)
     
-    pa = find(num1)
-    pb = find(num2)
-    #print(pa,pb)
+        pa = find(num1)
+        pb = find(num2)
+        #print(pa,pb)
     
-    if pa==pb:
-        ring.add(pa)
-    else:
-        if pa>pb:
-            temp = pa
-            pa = pb
-            pb = temp
-        parent[pb] = pa
-        node[pa] += node[pb]
-        node[pb] = 0
+        if pa==pb:
+            ring.add(pa)
+        else:
+            if pa>pb:
+                temp = pa
+                pa = pb
+                pb = temp
+            parent[pb] = pa
+            node[pa] += node[pb]
+            node[pb] = 0
